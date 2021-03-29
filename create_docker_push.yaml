@@ -1,0 +1,19 @@
+---
+- hosts: ansible-server
+  become: true
+
+  tasks:
+  - name: create docker image
+    command: docker build -t my-php:latest .
+    args:
+      chdir: /opt/k8s
+
+  - name: create tag to image
+    command: docker tag my-php talsan/my-php
+
+  - name: push image on to dockerhub
+    command: docker push talsan/my-php
+
+  - name: remove docker images form ansible server
+    command: docker rmi my-php:latest talsan/my-php
+    ignore_errors: yes
