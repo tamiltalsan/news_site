@@ -4,6 +4,7 @@ FROM php:7.2-fpm
 RUN yum -y update
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN docker-php-ext-enable mysqli
+COPY code /var/www/html/
 
 
 
