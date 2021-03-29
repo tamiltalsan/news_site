@@ -6,7 +6,7 @@
   - name: create docker image
     command: docker build -t my-php:latest .
     args:
-      chdir: /opt/k8s
+      chdir: $pwd
 
   - name: create tag to image
     command: docker tag my-php talsan/my-php
