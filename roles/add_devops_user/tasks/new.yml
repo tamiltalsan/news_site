@@ -1,0 +1,23 @@
+  - name: install sudo
+    apt:
+      name: sudo
+      state: present
+
+  - name: Add user
+    user:
+      name: devops
+      password: password
+      groups: sudo
+
+  - name: Add authorized key
+    authorized_key:
+      user: devops
+      key: "{{ lookup('file', 'id_rsa.pub') }}"
+
+  - name: Allow 'sudo' group to have passwordless sudo
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^%sudo'
+      line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+      validate: 'visudo -cf %s'
