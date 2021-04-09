@@ -59,7 +59,7 @@ spec:
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
         
-    - image: talsan/my-php:tagVersion 
+    - image: talsan/php:tagVersion 
       imagePullPolicy: IfNotPresent      
       name: app
       volumeMounts:
