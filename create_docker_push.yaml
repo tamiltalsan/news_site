@@ -33,7 +33,7 @@
   - name: Log into DockerHub
     docker_login:
       username: talsan
-      password: Tamilingaraj1
+      password: password
   - name: create docker image
     command: docker build -t my-php:latest .
     args:
